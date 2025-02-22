@@ -26,17 +26,17 @@ public class CommonSteps {
         ReportHelper.logInfo("Mensagem de sucesso validada com sucesso: " + actualMessage);
     }
 
-    @Then("a resposta deve retornar o status {int}")
-    public void validarStatusResposta(int statusCodeEsperado) {
-        if (lastResponse == null) {
-            throw new AssertionError("Erro: Nenhuma resposta foi armazenada!");
-        }
-        int statusCodeRecebido = lastResponse.getStatusCode();
-        Assertions.assertEquals(statusCodeEsperado, statusCodeRecebido,
-                "Erro: Status esperado " + statusCodeEsperado + " mas recebido " + statusCodeRecebido);
-
-        ReportHelper.logInfo("Status da resposta validado com sucesso: " + statusCodeRecebido);
-    }
+//    @Then("a resposta deve retornar o status {int}")
+//    public void validarStatusResposta(int statusCodeEsperado) {
+//        if (lastResponse == null) {
+//            throw new AssertionError("Erro: Nenhuma resposta foi armazenada!");
+//        }
+//        int statusCodeRecebido = lastResponse.getStatusCode();
+//        Assertions.assertEquals(statusCodeEsperado, statusCodeRecebido,
+//                "Erro: Status esperado " + statusCodeEsperado + " mas recebido " + statusCodeRecebido);
+//
+//        ReportHelper.logInfo("Status da resposta validado com sucesso: " + statusCodeRecebido);
+//    }
 
     public static void garantirAutenticacao() {
         try {

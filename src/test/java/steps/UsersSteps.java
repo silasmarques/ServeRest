@@ -2,9 +2,11 @@ package steps;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import support.ApiHelper;
+import support.AuthHelper;
 import support.ReportHelper;
 
 import java.util.HashMap;
@@ -13,38 +15,55 @@ import java.util.UUID;
 
 public class UsersSteps {
 
+    private String email;
+    private String password;
+    private Response lastResponse;
+
     private final CommonSteps commonSteps;
-    private static String email;
-    private static String password;
 
     public UsersSteps() {
         this.commonSteps = new CommonSteps();
     }
 
-    @Given("que quero criar um novo usuário")
-    public void prepararNovoUsuario() {
-        email = "user_" + UUID.randomUUID() + "@test.com";
-        password = "Senha123";
+    @Given("que eu tenho os dados de um novo usuário único")
+    public void queEuTenhoOsDadosDeUmNovoUsuarioUnico() {
+        // Criando um email e senha únicos para evitar duplicação
+        email = "user_" + UUID.randomUUID() + "@example.com";
+        password = "senha123";
 
-        ReportHelper.logInfo("Preparando usuário para cadastro. Email: " + email);
+        ReportHelper.logInfo("Gerados dados do usuário: " + email);
     }
 
-    @When("envio uma requisição para cadastrar o usuário")
-    public void cadastrarUsuario() {
+    @When("eu envio uma requisição para criar um usuário único")
+    public void euEnvioUmaRequisicaoParaCriarUmUsuarioUnico() {
+        // Criando payload para a requisição
         Map<String, Object> userPayload = new HashMap<>();
         userPayload.put("nome", "Usuário Teste");
         userPayload.put("email", email);
         userPayload.put("password", password);
-        userPayload.put("administrador", "true");
+        userPayload.put("administrador", "false");
 
-        Response response = ApiHelper.post("/usuarios", userPayload);
-        Assertions.assertNotNull(response, "Erro: A resposta da API não deve ser nula!");
-        Assertions.assertEquals(201, response.getStatusCode(), "Erro ao criar usuário!");
+        // Enviando requisição para criar usuário
+        lastResponse = ApiHelper.post("/usuarios", userPayload, false);
 
-        // Guardar credenciais para o login
+        // ⚠️ Aqui garantimos que `lastResponse` foi armazenado no `CommonSteps`
+        commonSteps.setLastResponse(lastResponse);
+
+        Assertions.assertNotNull(lastResponse, "Erro: A resposta da API não deve ser nula!");
+        Assertions.assertEquals(201, lastResponse.getStatusCode(), "Erro ao cadastrar o usuário!");
+
+        // Salvando usuário no AuthHelper para uso no login
         AuthHelper.setLastCreatedUser(email, password);
+        ReportHelper.logInfo("Usuário criado com sucesso: " + email);
+    }
 
-        CommonSteps.setLastResponse(response);
-        ReportHelper.logInfo("Usuário cadastrado com sucesso!");
+    @Then("a mensagem de sucesso deve conter {string}")
+    public void aMensagemDeSucessoDeveSer(String expectedMessage) {
+        Assertions.assertNotNull(lastResponse, "Erro: Nenhuma resposta foi armazenada!");
+
+        String actualMessage = lastResponse.jsonPath().getString("message");
+        Assertions.assertEquals(expectedMessage, actualMessage, "Erro: Mensagem de resposta incorreta!");
+
+        ReportHelper.logInfo("Mensagem de sucesso validada: " + actualMessage);
     }
 }

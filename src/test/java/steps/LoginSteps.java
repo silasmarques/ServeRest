@@ -5,6 +5,7 @@ import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import support.ApiHelper;
+import support.AuthHelper;
 import support.ReportHelper;
 
 import java.util.Map;
@@ -32,7 +33,7 @@ public class LoginSteps {
 
     @When("realizo login com esse usuário")
     public void realizarLogin() {
-        Response response = ApiHelper.post("/login", Map.of("email", email, "password", password));
+        Response response = ApiHelper.post("/login", Map.of("email", email, "password", password), false);
         Assertions.assertEquals(200, response.getStatusCode(), "Erro ao realizar login!");
 
         String token = response.jsonPath().getString("authorization");
