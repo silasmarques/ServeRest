@@ -12,12 +12,12 @@ import java.time.format.DateTimeFormatter;
 
 public class TestResultLogger implements TestWatcher {
 
-    private static final String REPORT_PATH = "build/reports/tests-report.html";
+    private static final String REPORT_PATH = "build/reports/Report.html";
 
     static {
         try {
-            if (!Files.exists(Paths.get("build/reports"))) {
-                Files.createDirectories(Paths.get("build/reports"));
+            if (!Files.exists(Paths.get("build/Report"))) {
+                Files.createDirectories(Paths.get("build/Report"));
             }
             PrintWriter writer = new PrintWriter(new FileWriter(REPORT_PATH, false));
             writer.println("<html><head><title>Relatório de Testes</title><style>");
