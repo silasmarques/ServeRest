@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">Resultados dos Testes Automatizados</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">fev. 24, 2025 04:45:31 PM</span></a>
+<a href="#"><span class="badge badge-primary">fev. 24, 2025 04:55:45 PM</span></a>
 </li>
 </ul>
 </div>
@@ -66,7 +66,6 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
 <a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
@@ -75,25 +74,25 @@
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="pass" test-id="1"
+        <li class="test-item"  status="fail" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">testDeletarUsuario()</p>
+            <p class="name">testCadastrarPedido()</p>
             <p class="text-sm">
-              <span>16:45:34</span> / <span>00:00:04:268</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>16:55:47</span> / <span>00:00:03:765</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testDeletarUsuario()</h5>
-<span class='badge badge-success'>02.24.2025 16:45:34</span>
-<span class='badge badge-danger'>02.24.2025 16:45:38</span>
-<span class='badge badge-default'>00:00:04:268</span>
+<h5 class="test-status text-fail">testCadastrarPedido()</h5>
+<span class='badge badge-success'>02.24.2025 16:55:47</span>
+<span class='badge badge-danger'>02.24.2025 16:55:51</span>
+<span class='badge badge-default'>00:00:03:765</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -105,10 +104,12 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>16:45:38</td>
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>16:55:51</td>
         <td>
-          Teste passou com sucesso!
+          Teste falhou: 1 expectation failed.
+Expected status code <201> but was <405>.
+
         </td>
       </tr>
   </tbody>
@@ -121,9 +122,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">testAtualizarUsuario()</p>
+            <p class="name">testListarPedidos()</p>
             <p class="text-sm">
-              <span>16:45:39</span> / <span>00:00:00:438</span>
+              <span>16:55:51</span> / <span>00:00:00:372</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -131,10 +132,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">testAtualizarUsuario()</h5>
-<span class='badge badge-success'>02.24.2025 16:45:39</span>
-<span class='badge badge-danger'>02.24.2025 16:45:39</span>
-<span class='badge badge-default'>00:00:00:438</span>
+<h5 class="test-status text-fail">testListarPedidos()</h5>
+<span class='badge badge-success'>02.24.2025 16:55:51</span>
+<span class='badge badge-danger'>02.24.2025 16:55:52</span>
+<span class='badge badge-default'>00:00:00:372</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -147,93 +148,11 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>16:45:39</td>
+        <td>16:55:52</td>
         <td>
           Teste falhou: 1 expectation failed.
-Expected status code <200> but was <201>.
+Expected status code <200> but was <405>.
 
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="3"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testLoginUsuario()</p>
-            <p class="text-sm">
-              <span>16:45:39</span> / <span>00:00:00:690</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testLoginUsuario()</h5>
-<span class='badge badge-success'>02.24.2025 16:45:39</span>
-<span class='badge badge-danger'>02.24.2025 16:45:40</span>
-<span class='badge badge-default'>00:00:00:690</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
-<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
-<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
-<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>16:45:40</td>
-        <td>
-          Teste passou com sucesso!
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="4"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testCadastroUsuario()</p>
-            <p class="text-sm">
-              <span>16:45:40</span> / <span>00:00:00:358</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testCadastroUsuario()</h5>
-<span class='badge badge-success'>02.24.2025 16:45:40</span>
-<span class='badge badge-danger'>02.24.2025 16:45:40</span>
-<span class='badge badge-default'>00:00:00:358</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
-<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
-<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
-<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>16:45:40</td>
-        <td>
-          Teste passou com sucesso!
         </td>
       </tr>
   </tbody>
@@ -255,25 +174,25 @@ Expected status code <200> but was <201>.
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>fev. 24, 2025 04:45:31 PM</h3>
+<h3>fev. 24, 2025 04:55:45 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>fev. 24, 2025 04:45:40 PM</h3>
+<h3>fev. 24, 2025 04:55:52 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Tests Passed</p>
-<h3>3</h3>
+<h3>0</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Tests Failed</p>
-<h3>1</h3>
+<h3>2</h3>
 </div></div>
 </div>
 </div>
@@ -289,12 +208,12 @@ Expected status code <200> but was <201>.
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='75%'>
-<b>3</b> tests passed
+<div><small data-tooltip='0%'>
+<b>0</b> tests passed
 </small>
 </div>
 <div>
-<small data-tooltip='25%'><b>1</b> tests failed,
+<small data-tooltip='100%'><b>2</b> tests failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -312,9 +231,9 @@ Expected status code <200> but was <201>.
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='75%'><b>3</b> events passed</small></div>
+<div><small data-tooltip='0%'><b>0</b> events passed</small></div>
 <div>
-<small data-tooltip='25%'><b>1</b> events failed,
+<small data-tooltip='100%'><b>2</b> events failed,
 <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -331,7 +250,7 @@ Expected status code <200> but was <201>.
 </div></div>
 <script>
 var timeline = {
-"testDeletarUsuario()":4.268,"testAtualizarUsuario()":0.438,"testLoginUsuario()":0.69,"testCadastroUsuario()":0.358
+"testCadastrarPedido()":3.765,"testListarPedidos()":0.372
 };
 </script>
 <div class="row">
@@ -362,8 +281,8 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 3,
-failParent: 1,
+passParent: 0,
+failParent: 2,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
@@ -379,8 +298,8 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 3,
-failEvents: 1,
+passEvents: 0,
+failEvents: 2,
 warningEvents: 0,
 skipEvents: 0,
 infoEvents: 0
