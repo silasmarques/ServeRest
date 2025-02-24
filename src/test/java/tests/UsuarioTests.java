@@ -35,7 +35,6 @@ public class UsuarioTests extends BaseTest {
                 .extract().path("_id");
     }
 
-
     @Test
     public void testLoginUsuario() {
         if (email == null) {

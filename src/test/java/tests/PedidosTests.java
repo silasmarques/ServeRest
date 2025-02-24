@@ -47,7 +47,6 @@ public class PedidosTests extends BaseTest {
         // Cria um produto para incluir no pedido
         String produtoId = createProdutoParaPedido(token);
 
-        // Exemplo de payload: array de produtos com id e quantidade
         String payload = String.format("{\"produtos\": [{\"idProduto\": \"%s\", \"quantidade\": 2}]}", produtoId);
 
         Response response = given()
@@ -65,7 +64,6 @@ public class PedidosTests extends BaseTest {
         System.out.println("Pedido cadastrado com ID: " + pedidoId);
     }
 
-    // Método auxiliar para criar um produto específico para os pedidos
     private String createProdutoParaPedido(String token) {
         String nome = "Produto Pedido " + System.currentTimeMillis();
         String payload = String.format("{\"nome\": \"%s\", \"preco\": 50.0, \"descricao\": \"Produto para pedido\", \"quantidade\": 20}", nome);

@@ -83,7 +83,6 @@ public class ProdutosTests extends BaseTest {
                 .body("message", containsString("Registro alterado com sucesso"));
     }
 
-
     @Test
     public void testDeletarProduto() {
         if (produtoId == null) {

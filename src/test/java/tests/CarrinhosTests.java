@@ -66,7 +66,7 @@ public class CarrinhosTests extends BaseTest {
         // Cria um produto para ser adicionado ao carrinho
         String productId = createProductForCarrinho(token);
 
-        // Monta o payload para criação do carrinho (ajuste se necessário conforme a especificação da API)
+        // Monta o payload para criação do carrinho
         String payload = String.format("{\"produtos\": [{\"idProduto\": \"%s\", \"quantidade\": 1}]}", productId);
 
         Response response = given()
@@ -114,5 +114,4 @@ public class CarrinhosTests extends BaseTest {
                 .statusCode(200)
                 .body("message", containsString("Não foi encontrado carrinho para esse usuário"));
     }
-
 }
