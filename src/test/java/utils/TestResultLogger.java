@@ -1,3 +1,4 @@
+/*
 package utils;
 
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -64,3 +65,4 @@ public class TestResultLogger implements TestWatcher {
         logResult(context.getDisplayName(), "SKIPPED");
     }
 }
+*/
