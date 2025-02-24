@@ -26,16 +26,18 @@ cd seu-repositorio
 ```
 ## Relatório 
 
-### 📊 Relatório de Testes
+### 📊 Relatório
 O relatório pode ser acessado online no link abaixo:
 
-👉 [Relatório de Testes](https://silas-qe-sicredi-c2261a.gitlab.io/report.html)
-ServeRest
-```
-./gradlew test
-```
-Gerar e visualizar o relatório com Allure:
-```
-./gradlew allureServe
-```
+👉 [Relatório de Testes](https://silasmarques.github.io/ServeRest/)
 
+Caso o relatório não seja gerado automaticamente após a execução do Teste no Pages, 
+executar comandos abaixo.
+```
+git checkout gh-pages
+cp reports/report.html ./index.html
+git add index.html
+git commit --allow-empty -m "Forçando atualização do relatório"
+git push origin gh-pages
+```
+👉 [Workflows](https://github.com/silasmarques/ServeRest/actions)
