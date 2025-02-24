@@ -8,7 +8,7 @@ public class ExtentReportSetup {
 
     public static ExtentReports setupExtentReport() {
         if (extent == null) {
-            ExtentSparkReporter spark = new ExtentSparkReporter("build/reports/ExtentReport.html");
+            ExtentSparkReporter spark = new ExtentSparkReporter("reports/ExtentReport.html");
             spark.config().setDocumentTitle("Relatório Automação API");
             spark.config().setReportName("Resultados dos Testes Automatizados");
             spark.config().setTheme(com.aventstack.extentreports.reporter.configuration.Theme.STANDARD);
