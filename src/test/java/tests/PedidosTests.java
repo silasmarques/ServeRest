@@ -2,10 +2,13 @@ package tests;
 
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import utils.ExtentReportListener;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
 
-
+@ExtendWith(ExtentReportListener.class)
 public class PedidosTests extends BaseTest {
 
     private static String token;

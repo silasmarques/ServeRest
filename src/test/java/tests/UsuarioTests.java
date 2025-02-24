@@ -1,9 +1,13 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import utils.ExtentReportListener;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
 
+@ExtendWith(ExtentReportListener.class)
 public class UsuarioTests extends BaseTest {
 
     private static String email;
