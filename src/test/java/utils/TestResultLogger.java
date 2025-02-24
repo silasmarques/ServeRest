@@ -12,12 +12,13 @@ import java.time.format.DateTimeFormatter;
 
 public class TestResultLogger implements TestWatcher {
 
-    private static final String REPORT_PATH = "build/reports/Report.html";
+    private static final String REPORT_PATH = "build/reports/report.html";
 
+    // Único bloco estático com as duas funcionalidades
     static {
         try {
-            if (!Files.exists(Paths.get("build/Report"))) {
-                Files.createDirectories(Paths.get("build/Report"));
+            if (!Files.exists(Paths.get("build/reports"))) {
+                Files.createDirectories(Paths.get("build/reports"));
             }
             PrintWriter writer = new PrintWriter(new FileWriter(REPORT_PATH, false));
             writer.println("<html><head><title>Relatório de Testes</title><style>");
@@ -28,6 +29,15 @@ public class TestResultLogger implements TestWatcher {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // Adiciona hook para finalizar o relatório ao encerrar os testes
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            try (PrintWriter writer = new PrintWriter(new FileWriter(REPORT_PATH, true))) {
+                writer.println("</ul></body></html>");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }));
     }
 
     private void logResult(String testName, String status) {
@@ -52,16 +62,5 @@ public class TestResultLogger implements TestWatcher {
     @Override
     public void testAborted(ExtensionContext context, Throwable cause) {
         logResult(context.getDisplayName(), "SKIPPED");
-    }
-
-    // Ao finalizar a execução dos testes
-    static {
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            try (PrintWriter writer = new PrintWriter(new FileWriter(REPORT_PATH, true))) {
-                writer.println("</ul></body></html>");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }));
     }
 }
