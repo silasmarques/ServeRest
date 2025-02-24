@@ -2,8 +2,15 @@ package tests;
 
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import utils.ExtentReportListener;
+import utils.TestResultLogger;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
+
+//@ExtendWith(TestResultLogger.class)
+@ExtendWith(ExtentReportListener.class)
 
 public class CarrinhosTests extends BaseTest {
 
@@ -98,8 +105,6 @@ public class CarrinhosTests extends BaseTest {
     @Test
     public void testRemoverCarrinho() {
         String token = getToken();
-        // Se não houver um carrinho criado, você pode optar por criar um ou não, dependendo da lógica da API.
-        // No endpoint cancelar-compra, a resposta informada é: "Não foi encontrado carrinho para esse usuário".
         given()
                 .spec(spec)
                 .header("Authorization", token)

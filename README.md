@@ -25,6 +25,12 @@ git clone https://github.com/silasmarques/ServeRest.git
 cd seu-repositorio
 ```
 ## Relatório 
+
+### 📊 Relatório de Testes
+O relatório pode ser acessado online no link abaixo:
+
+👉 [Relatório de Testes](https://silas-qe-sicredi-c2261a.gitlab.io/report.html)
+ServeRest
 ```
 ./gradlew test
 ```
