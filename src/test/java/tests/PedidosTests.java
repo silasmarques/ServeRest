@@ -14,7 +14,6 @@ public class PedidosTests extends BaseTest {
     private static String token;
     private static String pedidoId;
 
-    // Obtém um token válido para os testes de pedido
     private String getToken() {
         if (token == null) {
             String email = UsuarioUtils.generateUniqueEmail();
@@ -28,14 +27,15 @@ public class PedidosTests extends BaseTest {
         return token;
     }
 
+    // Testa a listagem dos carrinhos
     @Test
-    public void testListarPedidos() {
+    public void testListarCarrinhos() {
         String token = getToken();
         given()
                 .spec(spec)
                 .header("Authorization", token)
                 .when()
-                .get("/pedidos")
+                .get("/carrinhos")
                 .then()
                 .statusCode(200);
     }
@@ -44,10 +44,8 @@ public class PedidosTests extends BaseTest {
     public void testCadastrarPedido() {
         String token = getToken();
 
-        // Cria um produto para incluir no pedido
         String produtoId = createProdutoParaPedido(token);
 
-        // Exemplo de payload: array de produtos com id e quantidade
         String payload = String.format("{\"produtos\": [{\"idProduto\": \"%s\", \"quantidade\": 2}]}", produtoId);
 
         Response response = given()
@@ -55,17 +53,16 @@ public class PedidosTests extends BaseTest {
                 .header("Authorization", token)
                 .body(payload)
                 .when()
-                .post("/pedidos");
+                .post("/carrinhos");  // Endpoint correto para cadastrar pedidos é '/carrinhos'
 
         response.then()
                 .statusCode(201)
-                .body("message", containsString("cadastrado"));
+                .body("message", containsString("Cadastro realizado com sucesso"));
 
         pedidoId = response.jsonPath().getString("_id");
         System.out.println("Pedido cadastrado com ID: " + pedidoId);
     }
 
-    // Método auxiliar para criar um produto específico para os pedidos
     private String createProdutoParaPedido(String token) {
         String nome = "Produto Pedido " + System.currentTimeMillis();
         String payload = String.format("{\"nome\": \"%s\", \"preco\": 50.0, \"descricao\": \"Produto para pedido\", \"quantidade\": 20}", nome);

@@ -12,18 +12,35 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
 
-    // RestAssured para testes de APIs
-//    testImplementation 'io.rest-assured:rest-assured:5.3.0'
     testImplementation 'io.rest-assured:json-path:5.3.0'
     testImplementation 'io.rest-assured:xml-path:5.3.0'
-
-    // Allure para geração de relatórios
-//    testImplementation 'io.qameta.allure:allure-rest-assured:2.20.1'
-//    testImplementation 'io.qameta.allure:allure-junit5:2.20.1'
 
     testImplementation 'com.aventstack:extentreports:5.1.1'
     testImplementation 'io.rest-assured:rest-assured:5.4.0'
 
+}
+task atualizarRelatorio(type: Exec) {
+    workingDir = projectDir  // Isso garante execução na pasta raiz do projeto
+
+    if (System.properties['os.name'].toLowerCase().contains('windows')) {
+        commandLine 'cmd', '/c', '''
+            git checkout gh-pages &&
+            copy /Y reports\\report.html index.html &&
+            git add index.html &&
+            git commit --allow-empty -m "Atualizando relatório automaticamente" &&
+            git push origin gh-pages &&
+            git checkout main
+        '''
+    } else {
+        commandLine 'sh', '-c', '''
+            git checkout gh-pages &&
+            cp reports/report.html ./index.html &&
+            git add index.html &&
+            git commit --allow-empty -m "Atualizando relatório automaticamente" &&
+            git push origin gh-pages &&
+            git checkout main
+        '''
+    }
 }
 
 test {
@@ -31,10 +48,5 @@ test {
     testLogging {
         events "passed", "skipped", "failed"
     }
-}
-
-allure {
-    version = '2.20.1'
-    autoconfigure = true
-    aspectjweaver = true
+    finalizedBy 'atualizarRelatorio'
 }
