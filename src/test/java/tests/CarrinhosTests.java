@@ -11,7 +11,6 @@ import static org.hamcrest.Matchers.containsString;
 
 //@ExtendWith(TestResultLogger.class)
 @ExtendWith(ExtentReportListener.class)
-
 public class CarrinhosTests extends BaseTest {
 
     private static String token;
